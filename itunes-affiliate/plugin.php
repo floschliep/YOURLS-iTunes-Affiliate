@@ -3,7 +3,7 @@
 Plugin Name: iTunes Affiliate
 Plugin URI: https://github.com/floschliep/YOURLS-iTunes-Affiliate
 Description: Add your iTunes Affiliate-Token to all iTunes URLs before redirection
-Version: 1.0.1
+Version: 1.1
 Author: Florian Schliep
 Author URI: http://floschliep.com
 */
@@ -14,8 +14,8 @@ function flo_addToken($args) {
 	$token = 'YOUR_TOKEN_HERE';
 	$url = $args[0];
 	
-	// check if URL is an iTunes URL
-	if (preg_match("/(itunes\\.apple\\.com\\/)([a-z]{2,3}\\/)|([a-z].+\\/)id[0-9]+/ui", $url) == true) {
+	// check if URL is an iTunes URL. check for both desktop and mobile URLs.
+	if (preg_match("/(itunes\\.apple\\.com\\/)([a-z]{2,3}\\/)|([a-z].+\\/)id[0-9]+/ui", $url) == true || preg_match("/(appsto\\.re/)([a-z]{2,3}\\/)(.{5})\\.i/ui", $url) == true) {
 		
 		// check if last char is an "/" (in case it is, remove it)
 		if (substr($url, -1) == "/") {
