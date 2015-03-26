@@ -3,7 +3,7 @@
 Plugin Name: iTunes Affiliate
 Plugin URI: https://github.com/floschliep/YOURLS-iTunes-Affiliate
 Description: Add your iTunes Affiliate-Token to all iTunes URLs before redirection
-Version: 1.1
+Version: 1.1.1
 Author: Florian Schliep
 Author URI: http://floschliep.com
 */
@@ -61,6 +61,7 @@ function flo_addToken($args) {
 		// redirect
 		header("HTTP/1.1 301 Moved Permanently");
 		header("Location: $url");
+		echo($url);
 		
 		// now die so the normal flow of event is interrupted
 		die();
